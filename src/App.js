@@ -1,11 +1,15 @@
 
+import { Route, Routes } from 'react-router';
 import './App.css';
+import Home from './Components/Home';
+import History from './Components/History';
 
 function App() {
   return (
-    <div>
-      App
-    </div>
+   <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/history' element={<History />} />
+    </Routes>
   );
 }
 
