@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchWordDetailsThunk } from '../store/wordThunk';
 import { setWordDetails } from '../store/wordDetailsSlice';
 import { useNavigate } from 'react-router';
-
+import styles from "./history.module.css"
 
 
 const History = () => {
@@ -28,7 +28,7 @@ const [loading, setLoading] = useState(false);
     <h2>Word History</h2>
       <ul>
         {words.map((word, index) => (
-          <li key={index} onClick={() => handleWordClick(word)}>
+          <li key={index} className={styles.list} onClick={() => handleWordClick(word)}>
             {word}
           </li>
         ))}

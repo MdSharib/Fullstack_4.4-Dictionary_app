@@ -9,9 +9,12 @@ const MainSearch = () => {
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
   const [result, setResult] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const searchHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setResult([]);
     const res = await axios.get(
       `https://api.dictionaryapi.dev/api/v2/entries/en/${searchText}`
     );
@@ -19,6 +22,7 @@ const MainSearch = () => {
 
     setResult([res.data[0]]);
     setSearchText("");
+    setLoading(false);
   };
 
   return (
@@ -40,6 +44,9 @@ const MainSearch = () => {
         </form>
       </div>
       <div className={styles.resultDiv}>
+        {loading && (result.length <= 0) && (<div className={styles.loaderContainer}>
+        <div className={styles.loader}></div>
+      </div>)}
         {result.length > 0 && (
           <div>
             {console.log(result)}

@@ -55,7 +55,9 @@ const HistoryDetails = () => {
       {/* {console.log(wordDetails)} */}
       {/* {console.log("result -> ",result)} */}
       {loading ? (
-        <p>Loading word details...</p>
+        <div className={styles.loaderContainer}>
+        <div className={styles.loader}></div>
+      </div>
       ) : (
         <div className={styles.resultDiv}>
           {result.length > 0 && result[0] !== undefined && result[0] !== {} && (
