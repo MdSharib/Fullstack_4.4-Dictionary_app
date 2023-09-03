@@ -1,8 +1,7 @@
-
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const wordSlice = createSlice({
-  name: 'words',
+  name: "words",
   initialState: [],
   reducers: {
     addWord: (state, action) => {

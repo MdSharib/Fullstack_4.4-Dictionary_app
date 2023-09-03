@@ -10,19 +10,28 @@ const MainSearch = () => {
   const [searchText, setSearchText] = useState("");
   const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const searchHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
     setResult([]);
-    const res = await axios.get(
-      `https://api.dictionaryapi.dev/api/v2/entries/en/${searchText}`
-    );
-    dispatch(addWord(searchText));
-
-    setResult([res.data[0]]);
-    setSearchText("");
-    setLoading(false);
+    try {
+      
+      const res = await axios.get(
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${searchText}`
+      );
+      dispatch(addWord(searchText));
+  
+      setResult([res.data[0]]);
+      setSearchText("");
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setSearchText("");
+      setLoading(false);
+      setError(true);
+    }
   };
 
   return (
@@ -46,6 +55,9 @@ const MainSearch = () => {
       <div className={styles.resultDiv}>
         {loading && (result.length <= 0) && (<div className={styles.loaderContainer}>
         <div className={styles.loader}></div>
+      </div>)}
+        {error && (result.length <= 0) && (<div className={styles.loaderContainer}>
+        <div>Oops! There was an error with the text you entered. Please try again.</div>
       </div>)}
         {result.length > 0 && (
           <div>

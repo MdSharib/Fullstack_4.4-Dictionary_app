@@ -1,11 +1,11 @@
 
 
-/* historydetails.module.css */
+/* spinner */
 .loaderContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 88vh;
   }
   
   .loader {

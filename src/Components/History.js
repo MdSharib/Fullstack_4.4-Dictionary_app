@@ -11,7 +11,6 @@ const History = () => {
   const words = useSelector((state) => state.words);
   const dispatch = useDispatch();
 const navigate = useNavigate();
-// const history = useHistory();
 const [loading, setLoading] = useState(false); 
 
 
@@ -20,12 +19,12 @@ const [loading, setLoading] = useState(false);
     // dispatch(fetchWordDetailsThunk(word));
     
     navigate('/historyDetails', { state: { text: word } });
-    // navigate('/historyDetails');
+    
   };
   return (
     <>
     <Navbar />
-    <h2>Word History</h2>
+    <h2>Words History</h2>
       <ul>
         {words.map((word, index) => (
           <li key={index} className={styles.list} onClick={() => handleWordClick(word)}>
